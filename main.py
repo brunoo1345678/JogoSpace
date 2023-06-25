@@ -20,6 +20,19 @@ starName = None
 counter = 0
 counterstarName = 0
 points = {}
+def save_pos():
+     with open("star.json","w") as file:
+          json.dump(points,file)
+def load_pos():
+    global points
+    try:
+        with open("star.json","r") as file:
+            points = json.load(file)
+    except:
+        with open("star.json","w") as file:
+            json.dump(points,file)
+def delete_pos():
+     points.clear()
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
