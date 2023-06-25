@@ -63,3 +63,16 @@ while running:
             load_pos()
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_F12:
             delete_pos()
+    screen.blit(background, (0,0))
+    for key in points:
+        pos = points[key]
+        pygame.draw.circle(screen,white,(pos),5)
+        starNamePrint = starF.render(key + str(pos),True,white)
+        screen.blit(starNamePrint,(pos))
+    keys = list(points.keys())
+    for i in range(len(keys)-1):
+         currentKey = keys[i]
+         nextKey = keys[i + 1]
+         currentPoint = points[currentKey]
+         nextPoint = points[nextKey]
+         pygame.draw.line(screen,white,currentPoint,nextPoint)
