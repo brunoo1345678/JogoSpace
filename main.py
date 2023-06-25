@@ -36,4 +36,30 @@ def delete_pos():
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            save_pos()
             running = False
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            save_pos()
+            running = False
+        elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+            pos = pygame.mouse.get_pos()
+            starName = simpledialog.askstring("Space", "Nome da estrela:")
+            if starName == "":
+                starName = "Desconhecido"
+                if "Desconhecido" in points:
+                    counter = counter + 1
+                    starName = "Desconhecido" + str(counter)
+            elif starName in points:
+                counterstarName = counterstarName + 1
+                starName = starName + str(counterstarName)
+            elif starName is None:
+                    continue
+            points[starName]= pos
+            print(counterstarName)
+            print(points)
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_F10:
+            save_pos()
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_F11:
+            load_pos()
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_F12:
+            delete_pos()
