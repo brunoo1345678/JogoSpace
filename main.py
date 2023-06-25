@@ -76,3 +76,12 @@ while running:
          currentPoint = points[currentKey]
          nextPoint = points[nextKey]
          pygame.draw.line(screen,white,currentPoint,nextPoint)
+    f10 = font.render("Pressione F10 para salvar as marcações",True,white)
+    f11 = font.render("Pressione F11 para carregar as marcações salvas",True,white)
+    f12 = font.render("Pressione F12 para deletar as marcações",True,white)
+    screen.blit(f10,(10,10))
+    screen.blit(f11,(10,35))
+    screen.blit(f12,(10,60))
+    pygame.display.update()
+    clock.tick(180)
+pygame.quit()
