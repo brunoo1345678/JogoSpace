@@ -71,11 +71,25 @@ while running:
         screen.blit(starNamePrint,(pos))
     keys = list(points.keys())
     for i in range(len(keys)-1):
-         currentKey = keys[i]
-         nextKey = keys[i + 1]
-         currentPoint = points[currentKey]
-         nextPoint = points[nextKey]
-         pygame.draw.line(screen,white,currentPoint,nextPoint)
+        currentKey = keys[i]
+        nextKey = keys[i + 1]
+        currentPoint = points[currentKey]
+        nextPoint = points[nextKey]
+        pygame.draw.line(screen,white,currentPoint,nextPoint)
+        sumX = sum([currentPoint[0],nextPoint[0]])
+        sumY = sum([currentPoint[1],nextPoint[1]])
+        somas = [int(currentPoint[0]),int(nextPoint[0])]
+        final = max(somas)-min(somas)
+        somas2 = [currentPoint[0],nextPoint[0]]
+        final2 = max(somas2) - min(somas2)
+        somas3 = [currentPoint[1],nextPoint[1]]
+        final3 = max(somas3) - min(somas3)
+        valueX = currentPoint
+        value2 = set(nextPoint)
+        num = [sumX,sumY]
+        diff = max(num)-min(num)
+        distance = font.render("Distancia entre os pontos: " + str(final3),True,white)
+        screen.blit(distance,(sumX/2,sumY/2))
     f10 = font.render("Pressione F10 para salvar as marcações",True,white)
     f11 = font.render("Pressione F11 para carregar as marcações salvas",True,white)
     f12 = font.render("Pressione F12 para deletar as marcações",True,white)
